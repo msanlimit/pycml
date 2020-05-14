@@ -15,10 +15,13 @@ https://SERVER_IP/breakout/breakout-windows-x86_amd64.exe
 
 You need to set your personal information before exec script. Open pycml.py for editing and set info according your account, server etc.:
 
-username = "username"\n
-password = "password"\n
-controller = "https://192.168.1.1"\n
-listen_address = "127.0.0.1"\n
+username = "username"
+
+password = "password"
+
+controller = "https://192.168.1.1"
+
+listen_address = "127.0.0.1"
 
 Then run scipt with:
 
