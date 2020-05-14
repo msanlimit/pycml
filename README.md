@@ -8,6 +8,7 @@ You need to install python https://www.python.org/ and pyyaml https://pypi.org/p
 This script was tested on Windows10, Ubuntu and Mac OS.
 
 You need to download breakout app depend on your OS:
+
 https://SERVER_IP/breakout/breakout-linux-x86_amd64
 
 https://SERVER_IP/breakout/breakout-macos-x86_amd64
