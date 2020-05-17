@@ -1,8 +1,8 @@
 import yaml
 import os
 import platform
-
-
+import app_start
+from subprocess import Popen as new
 
 #user data
 username = "username"
@@ -11,6 +11,10 @@ controller = "https://192.168.1.1"
 listen_address = "127.0.0.1"
 verify_tls = False
 enabled = True
+
+terminal_start = False
+crt = True
+putty = False
 
 
 
@@ -69,20 +73,22 @@ os.system(pkg_name + " " + init)
 #labs.yaml tweak
 lab_id = []
 lab_ports = []
+label = []
 port_num = 0
 with open("labs.yaml") as file:
     list_labs = yaml.safe_load(file)
 
 for list in list_labs:
 	lab_id.append(list)
+	
 
 for lab in lab_id:
  list_labs[lab]['enabled'] = enabled
  for node in list_labs[lab]['nodes']:
+	 label.append(list_labs[lab]['nodes'][node]['label'])
 	 if list_labs[lab]['nodes'][node]['devices'][0]['listen_port'] > port_num:
 	     port_num = (list_labs[lab]['nodes'][node]['devices'][0]['listen_port'])
 	     lab_ports.append(port_num)
-
 	 else:
 		 port_num = port_num + 2
 		 list_labs[lab]['nodes'][node]['devices'][0]['listen_port'] = port_num
@@ -97,4 +103,11 @@ with open("labs.yaml", "w") as f:
 
 
 #run
-os.system(pkg_name + " " + run)
+#os.system(pkg_name + " " + run)
+p1 = new(pkg_name + " " + run, shell=False)
+if terminal_start == True:
+ p2 = new(app_start.app_run(lab_ports,label,crt,putty),shell=False)
+
+
+
+	
